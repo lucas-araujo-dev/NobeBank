@@ -10,6 +10,6 @@ class BankAccount < ApplicationRecord
   private
 
   def generate_number
-    self.number = "%05d" % self.user.id if self.user
+    self.account_number = "%05d" % self.user.id if self.user
   end
 end
