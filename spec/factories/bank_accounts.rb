@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :bank_account do
-    balance { 1.5 }
-    account_number { "MyString" }
-    user { nil }
+    balance { FFaker::Random.rand(1000.0..2000.0).round(2) }
+    user
   end
 end
