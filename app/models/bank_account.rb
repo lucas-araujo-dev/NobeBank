@@ -1,10 +1,10 @@
 class BankAccount < ApplicationRecord
   belongs_to :user
 
-  validates : accountNumber, presence: true
+  validates :account_number, presence: true
   validates :balance, presence: true
   validates_numericality_of :balance, greater_than_or_equal_to: 0
-  
+
   before_validation :generate_number
 
   private
