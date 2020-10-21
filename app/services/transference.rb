@@ -35,11 +35,11 @@ class Transference
   end
 
   def new_balance_sender
-    @sender.balance - (@value + calcule_transfer_rate + calculate_rate_over_thousand)
+    @sender.balance - (@value.to_f + calcule_transfer_rate + calculate_rate_over_thousand)
   end
 
   def new_balance_recipient
-    @recipient.balance + @value
+    @recipient.balance + @value.to_f
   end
 
   def calcule_transfer_rate
@@ -47,13 +47,13 @@ class Transference
   end
 
   def calculate_rate_over_thousand
-    @value > 1000 ? 10 : 0
+    @value.to_f > 1000 ? 10 : 0
   end
 
   def its_not_working_day_time?
     current_time = Time.now.strftime("%H%M")
     current_day = Time.now.strftime("%u")
 
-    current_day.between?(6, 7) || !current_time.between?("0900", "1800")
+    current_day.between?("6", "7") || !current_time.between?("0900", "1800")
   end
 end
