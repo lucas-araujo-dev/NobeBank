@@ -1,5 +1,21 @@
 <% if user_signed_in? %>
-<h1><%= current_user.email %></h1>
-<h1><%= current_user.bank_account.account_number %></h1>
-<h1><%= current_user.bank_account.balance %></h1>
+<h1>
+  Bank Accounts
+</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Account Number</th>
+      <th>Balance</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= current_user.bank_account.account_number %></td>
+        <td><%= number_to_currency(current_user.bank_account.balance) %></td>
+        
+      </tr>
+  </tbody>
+</table>
 <% end %>

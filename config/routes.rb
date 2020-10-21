@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :deposits, only: [:new, :create]
   resources :withdrawals, only: [:new, :create]
   resources :transferences, only: [:new, :create]
+  resources :bank_statements, only: [:new, :create]
 
   root to: "home#index"
   devise_for :users
