@@ -25,6 +25,6 @@ class Withdraw
   private
 
   def new_balance
-    @recipient.balance - @value
+    @recipient.balance - @value.to_f
   end
 end
