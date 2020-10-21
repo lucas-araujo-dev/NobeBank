@@ -1,0 +1,22 @@
+<%= form_with(model: withdraw, local: true, url: withdrawals_path) do |form| %>
+  <% if withdraw.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(withdraw.errors.count, "error") %> prohibited this withdraw from being saved:</h2>
+
+      <ul>
+        <% withdraw.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.number_field :value %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
