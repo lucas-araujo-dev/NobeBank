@@ -1,0 +1,27 @@
+<%= form_with(model: transference, local: true, url: transferences_path) do |form| %>
+  <% if transference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transference.errors.count, "error") %> prohibited this transference from being saved:</h2>
+
+      <ul>
+        <% transference.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.number_field :value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recipient %>
+    <%= form.text_field :recipient %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
