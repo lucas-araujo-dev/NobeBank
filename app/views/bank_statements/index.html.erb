@@ -1,0 +1,31 @@
+<h1>Bank Statement</h1>
+
+<%= form_tag(bank_statements_path, method: :get) do %>
+  <%= date_field_tag :initial_date, params[:initial_date], required: true %>
+  <%= date_field_tag :final_date, params[:final_date], required: true %>
+  <%= submit_tag "Search transactions" %>
+<% end %>
+
+<% if @transactions.empty? && params[:initial_date] && params[:final_date] %>
+  <h1>No transactions made between this date.</h1>
+<% end %>
+
+   <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @transactions.each do |transacation| %>
+          <tr>
+            <td><%= transacation.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+            <td><%= transacation.kind.titleize %></td>
+            <td><%= transacation.value %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
