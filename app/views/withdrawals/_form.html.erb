@@ -1,16 +1,15 @@
 <%= form_with(model: withdraw, local: true, url: withdrawals_path) do |form| %>
-
-  <div class="field">
-    <%= form.label :value %>
-    <%= form.number_field :value %>
+  <div class=transaction row">
+    <div class="field">
+      <%= form.label :value %>
+      <%= form.number_field :value %>
+    </div>
+    <div class="actions">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmation">
+        Create Transaction
+    </button>
+    </div>
   </div>
-
-
-
-
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmation">
-      Create Transaction
-   </button>
 
   <!-- Modal -->
   <div class="modal fade" id="modalConfirmation" tabindex="-1" role="dialog" aria-labelledby="modalConfirmationTitle" aria-hidden="true">

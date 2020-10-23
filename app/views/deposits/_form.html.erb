@@ -1,7 +1,7 @@
 <%= form_with(model: deposit, local: true, url: deposits_path) do |form| %>
   
   <div class="transaction">        
-    <div class="field">
+    <div class="field center">
       <%= form.label :value %>  
       <%= form.number_field :value %>
     </div>
