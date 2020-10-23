@@ -7,12 +7,9 @@ class WithdrawalsController < ApplicationController
 
   def create
     if current_user.valid_password?(withdraw_params[:password])
-      withdraw_service = Withdraw.new(
-        value: withdraw_params[:value],
-        recipient: current_user.bank_account,
-      )
+      set_withdraw_service
       respond_to do |format|
-        if withdraw_service.call?
+        if @withdraw_service.call?
           format.html { redirect_to root_path, notice: "withdraw was successfully executed." }
         else
           format.html { redirect_to new_withdrawal_path, notice: "There was an error with your withdraw." }
@@ -26,6 +23,13 @@ class WithdrawalsController < ApplicationController
   end
 
   private
+
+  def set_withdraw_service
+    @withdraw_service = Withdraw.new(
+      value: withdraw_params[:value],
+      recipient: current_user.bank_account,
+    )
+  end
 
   def withdraw_params
     params.require(:transaction).permit(:value, :password)
