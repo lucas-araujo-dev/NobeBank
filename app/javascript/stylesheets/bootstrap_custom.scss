@@ -41,15 +41,27 @@
   text-decoration: none;
 }
 
+h2 {
+  text-align: center;
+}
+
 .transaction {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  border: 1px solid purple;
 }
 
 a,
 a:hover {
-  color: blue;
+  color: black;
   text-decoration: none;
+}
+
+.menu {
+  background-color: lightgray;
+  width: 100%;
+  justify-content: center;
 }
 
 .sign {
@@ -78,11 +90,13 @@ a:hover {
 
 .field > input[type='text'],
 select {
+  height: 10px;
+  width: 210px;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  border-radius: 5px;
 }
 
 .field > input[type='submit'] {
@@ -92,6 +106,10 @@ select {
   margin: 8px 0;
   border: none;
   cursor: pointer;
+}
+
+.field > input[type='number'] {
+  margin-left: 25px;
 }
 
 @media (min-width: 1200px) {

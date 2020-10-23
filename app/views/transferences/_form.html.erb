@@ -1,18 +1,22 @@
 <%= form_with(model: transference, local: true, url: transferences_path) do |form| %>
+<div class="transaction">
+  <div>
+    <div class="field">
+      <%= form.label :value %>
+      <%= form.number_field :value %>
+    </div>
 
-  <div class="field">
-    <%= form.label :value %>
-    <%= form.number_field :value %>
-  </div>
+    <div class="field">
+      <%= form.label :recipient %>
+      <%= form.text_field :recipient %>
+    </div>
+  <div>
 
-  <div class="field">
-    <%= form.label :recipient %>
-    <%= form.text_field :recipient %>
-  </div>
-
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmation">
-      Create Transaction
-   </button>
+  
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmation">
+        Create Transaction
+    </button>
+  
 
   <!-- Modal -->
   <div class="modal fade" id="modalConfirmation" tabindex="-1" role="dialog" aria-labelledby="modalConfirmationTitle" aria-hidden="true">
