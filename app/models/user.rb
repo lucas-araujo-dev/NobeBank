@@ -9,6 +9,10 @@ class User < ApplicationRecord
 
   after_create :create_account
 
+  def active_for_authentication?
+    super && bank_account.enabled?
+  end
+
   private
 
   def create_account
