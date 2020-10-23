@@ -8,13 +8,9 @@ class TransferencesController < ApplicationController
 
   def create
     if current_user.valid_password?(transference_params[:password])
-      transference_service = Transference.new(
-        value: transference_params[:value],
-        sender: current_user.bank_account,
-        recipient: @recipient,
-      )
+      set_transference_service
       respond_to do |format|
-        if transference_service.call?
+        if @transference_service.call?
           format.html { redirect_to root_path, notice: "Transference was successfully executed." }
         else
           format.html { redirect_to new_transference_path, notice: "There was an error with your transference." }
@@ -28,6 +24,14 @@ class TransferencesController < ApplicationController
   end
 
   private
+
+  def set_transference_service
+    @transference_service = Transference.new(
+      value: transference_params[:value],
+      sender: current_user.bank_account,
+      recipient: @recipient,
+    )
+  end
 
   def transference_params
     params.require(:transaction)
