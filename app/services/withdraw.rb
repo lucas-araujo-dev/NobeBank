@@ -10,12 +10,7 @@ class Withdraw
     ActiveRecord::Base.transaction do
       begin
         @recipient.update!(balance: new_balance)
-        Transaction.create!(
-          value: @value,
-          recipient: @recipient,
-          sender: @recipient,
-          kind: Transaction.kinds[:withdraw],
-        )
+        withdraw_params
       rescue ActiveRecord::RecordInvalid
         raise ActiveRecord::Rollback
       end
@@ -23,6 +18,15 @@ class Withdraw
   end
 
   private
+
+  def withdraw_params
+    Transaction.create!(
+      value: @value,
+      recipient: @recipient,
+      sender: @recipient,
+      kind: Transaction.kinds[:withdraw],
+    )
+  end
 
   def new_balance
     @recipient.balance - @value.to_f
