@@ -20,11 +20,11 @@
       </thead>
 
       <tbody>
-        <% @transactions.each do |transacation| %>
+        <% @transactions.each do |transaction| %>
           <tr>
-            <td><%= transacation.created_at.strftime("%d/%m/%Y %H:%M") %></td>
-            <td><%= transacation.kind.titleize %></td>
-            <td><%= transacation.value %></td>
+            <td><%= transaction.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+            <td><%= transaction.kind.titleize %></td>
+            <td><%= transaction.value %></td>
           </tr>
         <% end %>
       </tbody>
