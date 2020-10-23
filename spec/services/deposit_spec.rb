@@ -21,14 +21,15 @@ RSpec.describe Deposit do
       end
     end
 
-    context "when deposit is made " do
+    context "when deposit is made" do
       let(:bank_account) { create(:bank_account) }
       let(:value) { FFaker::Random.rand(100.0..500.0).round(2) }
+
       before do
         @deposit = Deposit.new(value: value, recipient: bank_account)
+        new_balance_recipient = bank_account.balance + value
       end
       it "does create deposit" do
-        new_balance_recipient = bank_account.balance + value
         @deposit.call?
         expect(bank_account.reload.balance).to eq(new_balance_recipient)
       end
