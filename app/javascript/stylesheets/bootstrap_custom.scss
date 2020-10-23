@@ -41,9 +41,14 @@
   text-decoration: none;
 }
 
+.transaction {
+  justify-content: center;
+  align-items: center;
+}
+
 a,
 a:hover {
-  color: white;
+  color: blue;
   text-decoration: none;
 }
 
@@ -52,14 +57,9 @@ a:hover {
   margin-top: -40px;
 }
 
-.menu {
-  background-color: darkgray;
-  height: 75px;
-}
-
 .div-login-sign {
   border-radius: 5px;
-  background-color: #f2f8f9;
+  background-color: lightblue;
   padding: 20px;
   margin: 50px 400px;
 }
@@ -69,18 +69,6 @@ a:hover {
   background-color: #f2f8f9;
   padding: 20px;
   margin: 50px 400px;
-}
-
-.bg-green {
-  background-color: #00a65a;
-}
-
-.bg-aqua {
-  background-color: #00c0ef;
-}
-
-.bg-crimson {
-  background-color: crimson;
 }
 
 .field {
